@@ -1,0 +1,39 @@
+#!/bin/bash
+KONIEC="x";
+function wybor
+{
+case $KONIEC in
+l) echo "Rozpoznaje typ pliku"; 
+file ;;
+b) echo "Wyszukaj katalog";
+find ;;
+n) echo "Liczy ilosc wierszy w pliku";
+wc -l skro ;;
+s) echo "Jesteś w katalogu : $(pwd)" ;;
+p) echo "teraz wypisze wszystkie twoje procesy";
+ps -e ;;
+w) echo "Oto lista plików w tym katalogu";
+ls ;;
+esac;
+}
+function menu # poczatek menu
+{
+until [ $KONIEC = k ];do
+echo "Wciśnij Enter aby kontynuować";
+read;
+clear; # czyść ekran
+echo $KONIEC;
+echo " Proste Menu ";
+echo
+echo "l - Typ pliku";
+echo "b - Wyszukuje odpowiednie pliki i katalogi";
+echo "s - wyświetl ścieżkę w której znajduje się skrypt.";
+echo "p - wyświetl listę procesów użytkownika.";
+echo "n - Ilosc wierszy w pliku i jego nazwa.";
+echo "w - wyświetl wszystkie pliki w tym katalogu.";
+echo "k - zakończ skrypt.";
+read KONIEC;
+wybor;
+done;
+}
+menu;
